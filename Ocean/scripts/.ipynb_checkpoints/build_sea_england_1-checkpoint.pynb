@@ -1,0 +1,560 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "228a7ae9-e15f-4f98-bf26-aee31b4da2bf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "\"\"\"\n",
+    "Script: build_sea_england_1.py\n",
+    "Purpose: Load all cleaned season files (valid_*.csv) and compile them into\n",
+    "         the master Sea_England_1.csv file with all available columns.\n",
+    "\n",
+    "Output: C:/Users/mikek/One Drive New/OneDrive/Leviathan/Ocean/England_1/Sea_England_1.csv\n",
+    "\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "83c3025e-3d94-4184-9694-f37b21fff370",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "✅ Created folder: C:\\Users\\mikek\\One Drive New\\OneDrive\\Leviathan\\Ocean\\England_1\n"
+     ]
+    }
+   ],
+   "source": [
+    "from pathlib import Path\n",
+    "\n",
+    "# Define the full Ocean structure under Leviathan\n",
+    "ocean_root = Path(r\"C:\\Users\\mikek\\One Drive New\\OneDrive\\Leviathan\\Ocean\")\n",
+    "england_folder = ocean_root / \"England_1\"\n",
+    "\n",
+    "# Create folders if they don't exist\n",
+    "england_folder.mkdir(parents=True, exist_ok=True)\n",
+    "\n",
+    "print(f\"✅ Created folder: {england_folder}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "a9fb162f-08a3-4d81-aad8-b1257249fafb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "os.chdir(r\"C:\\Users\\mikek\\One Drive New\\OneDrive\\Leviathan\\Ocean\\England_1\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "7e923a7f-ac6e-48dd-a1bb-930e7ca1de38",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9394/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n",
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9495/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9596/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9697/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9798/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n",
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9899/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/9900/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0001/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0102/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0203/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0304/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0405/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0506/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0607/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0708/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0809/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/0910/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1011/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1112/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1213/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1314/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1415/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1516/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1617/E0.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\2978631541.py:39: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n",
+      "  df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1718/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1819/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/1920/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/2021/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/2122/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/2223/E0.csv\n",
+      "⬇️ Downloading https://www.football-data.co.uk/mmz4281/2324/E0.csv\n",
+      "\n",
+      "✅ Saved 11944 rows to Sea_England_1.csv\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "import requests\n",
+    "from io import StringIO\n",
+    "import csv\n",
+    "\n",
+    "# Define all seasons\n",
+    "years = [ '9394', '9495', '9596', '9697', '9798', '9899', '9900', '0001',\n",
+    "          '0102', '0203', '0304', '0405', '0506', '0607', '0708', '0809',\n",
+    "          '0910', '1011', '1112', '1213', '1314', '1415', '1516', '1617',\n",
+    "          '1718', '1819', '1920', '2021', '2122', '2223', '2324']\n",
+    "\n",
+    "div = 'E0'\n",
+    "all_dfs = []\n",
+    "errors = []\n",
+    "\n",
+    "def safe_read_csv(url):\n",
+    "    r = requests.get(url)\n",
+    "    r.raise_for_status()\n",
+    "    lines = r.content.decode(\"ISO-8859-1\").splitlines()\n",
+    "\n",
+    "    header = next(csv.reader([lines[0]]))\n",
+    "    expected_cols = len(header)\n",
+    "\n",
+    "    df = pd.read_csv(StringIO(\"\\n\".join(lines)), usecols=range(expected_cols))\n",
+    "    df.columns = df.columns.str.strip()\n",
+    "    return df\n",
+    "\n",
+    "# Process each season\n",
+    "for y in years:\n",
+    "    url = f\"https://www.football-data.co.uk/mmz4281/{y}/{div}.csv\"\n",
+    "    print(f\"⬇️ Downloading {url}\")\n",
+    "    try:\n",
+    "        df = safe_read_csv(url)\n",
+    "\n",
+    "        # Clean and parse dates\n",
+    "        df.columns = df.columns.str.strip()\n",
+    "        if 'Date' not in df.columns:\n",
+    "            raise ValueError(\"Missing 'Date' column\")\n",
+    "        df['Date'] = pd.to_datetime(df['Date'], dayfirst=True, errors='coerce')\n",
+    "        df = df.dropna(subset=['Date'])\n",
+    "\n",
+    "        # Sort by date to find actual season year from last match\n",
+    "        df = df.sort_values('Date')\n",
+    "        season_year = df['Date'].iloc[-1].year\n",
+    "\n",
+    "        df['Season'] = str(season_year)\n",
+    "        df['Season_Div'] = f\"{season_year}_{div}\"\n",
+    "\n",
+    "        all_dfs.append(df)\n",
+    "\n",
+    "    except Exception as e:\n",
+    "        print(f\"❌ Error processing {url}: {e}\")\n",
+    "        errors.append((y, str(e)))\n",
+    "\n",
+    "# Combine and save\n",
+    "combined = pd.concat(all_dfs, ignore_index=True, sort=False)\n",
+    "combined.to_csv(\"Sea_England_1.csv\", index=False)\n",
+    "\n",
+    "print(f\"\\n✅ Saved {len(combined)} rows to Sea_England_1.csv\")\n",
+    "\n",
+    "if errors:\n",
+    "    print(\"\\n⚠️ Issues with the following seasons:\")\n",
+    "    for year, msg in errors:\n",
+    "        print(f\"- {year}: {msg}\")\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "5017bf41-77be-499c-90c1-8457378d300a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "📊 Match count per season:\n",
+      "Season\n",
+      "1994    462\n",
+      "1995    462\n",
+      "1996    380\n",
+      "1997    380\n",
+      "1998    380\n",
+      "1999    380\n",
+      "2000    380\n",
+      "2001    380\n",
+      "2002    380\n",
+      "2003    380\n",
+      "2004    380\n",
+      "2005    380\n",
+      "2006    380\n",
+      "2007    380\n",
+      "2008    380\n",
+      "2009    380\n",
+      "2010    380\n",
+      "2011    380\n",
+      "2012    380\n",
+      "2013    380\n",
+      "2014    380\n",
+      "2015    380\n",
+      "2016    380\n",
+      "2017    380\n",
+      "2018    380\n",
+      "2019    380\n",
+      "2020    380\n",
+      "2021    380\n",
+      "2022    380\n",
+      "2023    380\n",
+      "2024    380\n",
+      "Name: count, dtype: int64\n",
+      "\n",
+      "💾 Saved to season_row_counts.csv\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "C:\\Users\\mikek\\AppData\\Local\\Temp\\ipykernel_22808\\992469029.py:4: DtypeWarning: Columns (131) have mixed types. Specify dtype option on import or set low_memory=False.\n",
+      "  df = pd.read_csv(\"Sea_England_1\")\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "# Load the combined dataset\n",
+    "df = pd.read_csv(\"Sea_England_1\")\n",
+    "\n",
+    "# Show unique seasons and counts\n",
+    "season_counts = df['Season'].value_counts().sort_index()\n",
+    "\n",
+    "print(\"📊 Match count per season:\")\n",
+    "print(season_counts)\n",
+    "\n",
+    "# Save to CSV if needed\n",
+    "season_counts.to_csv(\"season_row_counts.csv\", header=[\"MatchCount\"])\n",
+    "print(\"\\n💾 Saved to season_row_counts.csv\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7f3f01f4-898f-4358-9cb8-1345d819cfcc",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
