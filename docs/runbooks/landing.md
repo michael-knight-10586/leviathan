@@ -10,7 +10,7 @@
    from leviathan.landing.manifest import run
    print(run(spark))
    ```
-3. Takes about 15–30 minutes (to be confirmed).
+3. Takes about 5 minutes; longer if the site is slow.
 
 ## Expected
 Summary of counts: new / changed / unchanged / missing, plus pages_added / pages_removed.
