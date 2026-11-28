@@ -20,6 +20,20 @@ Table: `leviathan.landing.manifest`, one row per file per run
 
 Code: `src/leviathan/landing/` (`discovery.py` finds files, `manifest.py` lands and records)
 
+## Bronze
+
+Every row of every landed file, unchanged, as text (ADR 0004).
+
+Table: `leviathan.bronze.matches`, one row per source row
+
+- record: map of the file's own column names to text values, e.g. `record['HomeTeam']`
+- lineage: url, landed_path, run_date, encoding, row_no
+- a changed file's rows are replaced; history stays in landing
+
+Table: `leviathan.bronze.matches_quarantine`, rows with more fields than their header (raw_line, reason)
+
+Code: `src/leviathan/bronze/load.py`
+
 ## Tests
 
 Run `pytest` from the repo root.
