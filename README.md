@@ -19,3 +19,8 @@ Table: `leviathan.landing.manifest`, one row per file per run
 - columns: run_date, url, source_page, status, sha256, size_bytes, landed_path
 
 Code: `src/leviathan/landing/` (`discovery.py` finds files, `manifest.py` lands and records)
+
+## Tests
+
+Run `pytest` from the repo root.
+Covers functions that need no internet or Databricks; `run()` is checked by running it in Databricks.
